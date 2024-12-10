@@ -22,26 +22,6 @@ public class Player {
         assets_worth *= (1 + rate);
     }
 
-    public double calculateInterest(double loan) {
-        /*
-         * Idea:
-         * wealthy players = low interst
-         * poor players = higher interest
-         * too poor players = no credit
-         * interest is always positive
-         * -1 = no credit
-         * loan
-         * interest = ------------------ * proportion
-         * income * worth
-         */
-        double wealth = liquid_wealth + assets_worth;
-        double calculatedInterest = loan / (income * wealth);
-        if (calculatedInterest > (income / 3)) {
-            return -1.00; // not credit worthy
-        }
-        return calculatedInterest;
-    }
-
     public double calculateIncome() {
         /*
          * Idea:
