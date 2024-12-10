@@ -1,0 +1,124 @@
+{
+  "cards": [
+    {
+      "name": "Bahnhof Luzern",
+      "category": "Railroad",
+      "price": 200
+    },
+    {
+      "name": "Bahnhof Zürich",
+      "category": "Railroad",
+      "price": 200
+    },
+    {
+      "name": "Bahnhof Basel",
+      "category": "Railroad",
+      "price": 200
+    },
+    {
+      "name": "Bahnhof Genf",
+      "category": "Railroad",
+      "price": 200
+    },
+    {
+      "name": "Zürich Paradeplatz",
+      "category": "Blue",
+      "price": 400
+    },
+    {
+      "name": "Bahnhofstrasse",
+      "category": "Blue",
+      "price": 350
+    },
+    {
+      "name": "Bern Bundesplatz",
+      "category": "Green",
+      "price": 320
+    },
+    {
+      "name": "Genf Quai du Mont-Blanc",
+      "category": "Green",
+      "price": 300
+    },
+    {
+      "name": "Lugano Seepromenade",
+      "category": "Green",
+      "price": 300
+    },
+    {
+      "name": "Chur Altstadt",
+      "category": "Yellow",
+      "price": 260
+    },
+    {
+      "name": "Interlaken Jungfraujoch",
+      "category": "Yellow",
+      "price": 260
+    },
+    {
+      "name": "Thun Schloss",
+      "category": "Yellow",
+      "price": 240
+    },
+    {
+      "name": "Zermatt Matterhorn",
+      "category": "Red",
+      "price": 220
+    },
+    {
+      "name": "Lausanne Ouchy",
+      "category": "Red",
+      "price": 220
+    },
+    {
+      "name": "Montreux Riviera",
+      "category": "Red",
+      "price": 200
+    },
+    {
+      "name": "St. Moritz Skigebiet",
+      "category": "Orange",
+      "price": 180
+    },
+    {
+      "name": "Luzern Kapellbrücke",
+      "category": "Orange",
+      "price": 180
+    },
+    {
+      "name": "Davos Kongresszentrum",
+      "category": "Orange",
+      "price": 160
+    },
+    {
+      "name": "Schaffhausen Rheinfall",
+      "category": "Pink",
+      "price": 140
+    },
+    {
+      "name": "Solothurn Altstadt",
+      "category": "Pink",
+      "price": 140
+    },
+    {
+      "name": "Aarau Aareufer",
+      "category": "Pink",
+      "price": 120
+    },
+    {
+      "name": "Biel Altstadt",
+      "category": "Light Blue",
+      "price": 100
+    },
+    {
+      "name": "Freiburg Altstadt",
+      "category": "Light Blue",
+      "price": 100
+    },
+    {
+      "name": "St. Gallen Klosterbezirk",
+      "category": "Light Blue",
+      "price": 120
+    }
+  ]
+}
