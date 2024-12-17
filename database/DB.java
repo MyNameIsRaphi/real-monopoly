@@ -10,4 +10,8 @@ public class DB {
         this.path = path;
     }
 
+    public void connect() {
+
+    }
+
 }

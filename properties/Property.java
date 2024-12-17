@@ -15,4 +15,6 @@ public class Property {
     public double value;
     public String name;
     public Category category;
+    public int id;
+    public int player_id;
 }

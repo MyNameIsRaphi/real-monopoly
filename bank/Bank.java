@@ -1,12 +1,20 @@
 package bank;
 
 import players.Player;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Bank {
     private double reserve;
     private double inflation;
-    private ArrayList<Credit> credits = new ArrayList<Credit>();
+    private HashMap<Integer, Credit> credits = new HashMap<Integer, Credit>();
+    private int highest_credit_id = 0;
+
+    private int generateCreditID() {
+
+        int id = highest_credit_id;
+        highest_credit_id++;
+        return id;
+    }
 
     public Bank(double reserve) {
         this.reserve = reserve;
@@ -35,7 +43,6 @@ public class Bank {
         double wealth = player.getWealth();
         double income = player.calculateIncome();
         double interest = calculateInterest(loan, wealth, income);
-
         if (interest > 0 || loan * 0.1 > reserve) {
             throw new Exception("Not enough reserve or player is not ledigable for a credit");
         }
@@ -44,27 +51,27 @@ public class Bank {
 
         inflation = newMoney / reserve;
         printMoney(newMoney);
-        Credit credit = new Credit(player, interest, loan);
-        this.credits.add(credit);
+        int id = generateCreditID();
+        Credit credit = new Credit(player, interest, loan, id);
+        this.credits.put(id, credit);
         return credit;
     }
 
     public boolean payBackLoan(Credit credit, double money) {
-        // TODO create HashMap from Player name to loan. All credits from a player get
-        // sumed up
+        // check if credit exists
+        if (!credits.containsKey(credit.id)) {
+            return false;
+        }
         boolean success = credit.player.substractLiquidWealth(money);
         if (!success) {
             return false;
         }
+        // update credit
         credit.loan -= money;
         credit.interest = credit.interestRate * credit.loan;
-        for (int i = 0; i < credits.size(); i++) {
-            Credit element = credits.get(i);
-            if (element == credit) {
-                credits.set(i, credit);
-            }
-        }
-
+        credits.put(credit.id, credit);
+        reserve += money;
+        return true;
     }
 
     public void printMoney(double money) {

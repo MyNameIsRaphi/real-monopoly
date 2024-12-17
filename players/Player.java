@@ -11,6 +11,7 @@ public class Player {
     private double liquid_wealth;
     private double income;
     private HashMap<String, Property> properties = new HashMap<String, Property>(28);
+    public int id;
 
     public Player(String name, double money) {
         this.liquid_wealth = money;
