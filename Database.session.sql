@@ -1,2 +1,4 @@
 -- @block 
--- create db 
+-- create new monpoly db with id
+
+CREATE DATABASE <id>;
