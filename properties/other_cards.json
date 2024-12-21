@@ -1,0 +1,145 @@
+{
+  "special_spaces": [
+    {
+      "name": "START",
+      "type": "corner",
+      "instruction": "Collect 200 CHF when passing or landing on START",
+      "value": 200
+    },
+    {
+      "name": "Einkommenssteuer",
+      "type": "tax",
+      "instruction": "Pay 200 CHF income tax",
+      "value": 200
+    },
+    {
+      "name": "Luxussteuer",
+      "type": "tax",
+      "instruction": "Pay 100 CHF luxury tax",
+      "value": 100
+    },
+    {
+      "name": "Gehen Sie in das Gefängnis",
+      "type": "corner",
+      "instruction": "Go directly to jail. Do not pass START, do not collect 200 CHF"
+    },
+    {
+      "name": "Gefängnis",
+      "type": "corner",
+      "instruction": "Just visiting if landing on this space"
+    },
+    {
+      "name": "Freies Parken",
+      "type": "corner",
+      "instruction": "Free parking space - collect any accumulated fees (if playing with this house rule)"
+    }
+  ],
+  "ereignis_cards": [
+    {
+      "type": "movement",
+      "instruction": "Rücken Sie vor bis auf START",
+      "effect": "move_to_start",
+      "collect": 200
+    },
+    {
+      "type": "movement",
+      "instruction": "Gehen Sie direkt ins Gefängnis. Begeben Sie sich direkt dorthin. Gehen Sie nicht über START, ziehen Sie nicht 200 CHF ein",
+      "effect": "go_to_jail"
+    },
+    {
+      "type": "movement",
+      "instruction": "Rücken Sie vor bis zum Bahnhof Zürich. Wenn Sie über START kommen, ziehen Sie 200 CHF ein",
+      "effect": "move_to_property",
+      "destination": "Bahnhof Zürich"
+    },
+    {
+      "type": "movement",
+      "instruction": "Machen Sie einen Ausflug zum Paradeplatz",
+      "effect": "move_to_property",
+      "destination": "Zürich Paradeplatz"
+    },
+    {
+      "type": "payment",
+      "instruction": "Zahlen Sie Schulgeld: 150 CHF",
+      "value": -150
+    },
+    {
+      "type": "payment",
+      "instruction": "Die Bank zahlt Ihnen eine Dividende von 50 CHF",
+      "value": 50
+    },
+    {
+      "type": "payment",
+      "instruction": "Strafzettel! Zahlen Sie 15 CHF",
+      "value": -15
+    },
+    {
+      "type": "repairs",
+      "instruction": "Lassen Sie alle Ihre Häuser renovieren. Zahlen Sie für jedes Haus 25 CHF, für jedes Hotel 100 CHF",
+      "house_cost": 25,
+      "hotel_cost": 100
+    },
+    {
+      "type": "get_out_of_jail",
+      "instruction": "Sie kommen aus dem Gefängnis frei! Behalten Sie diese Karte, bis Sie sie benötigen oder verkaufen"
+    },
+    {
+      "type": "payment",
+      "instruction": "Ihre Lebensversicherung wird fällig. Sie erhalten 100 CHF",
+      "value": 100
+    }
+  ],
+  "gemeinschaftsfeld_cards": [
+    {
+      "type": "payment",
+      "instruction": "Arzt-Honorar. Zahlen Sie 50 CHF",
+      "value": -50
+    },
+    {
+      "type": "payment",
+      "instruction": "Sie erhalten aus Vorzugs-Aktien 25 CHF",
+      "value": 25
+    },
+    {
+      "type": "payment",
+      "instruction": "Sie haben Geburtstag. Jeder Spieler schenkt Ihnen 10 CHF",
+      "value": 10,
+      "effect": "collect_from_each"
+    },
+    {
+      "type": "payment",
+      "instruction": "Bank-Irrtum zu Ihren Gunsten. Ziehen Sie 200 CHF ein",
+      "value": 200
+    },
+    {
+      "type": "movement",
+      "instruction": "Gehen Sie in das Gefängnis. Begeben Sie sich direkt dorthin. Gehen Sie nicht über START, ziehen Sie nicht 200 CHF ein",
+      "effect": "go_to_jail"
+    },
+    {
+      "type": "get_out_of_jail",
+      "instruction": "Sie kommen aus dem Gefängnis frei! Behalten Sie diese Karte, bis Sie sie benötigen oder verkaufen"
+    },
+    {
+      "type": "payment",
+      "instruction": "Sie erben 100 CHF",
+      "value": 100
+    },
+    {
+      "type": "payment",
+      "instruction": "Aus Lagerverkäufen erhalten Sie 50 CHF",
+      "value": 50
+    },
+    {
+      "type": "repairs",
+      "instruction": "Sie werden zu Straßenausbesserungsarbeiten herangezogen. Zahlen Sie für Ihre Häuser und Hotels. 40 CHF je Haus, 115 CHF je Hotel",
+      "house_cost": 40,
+      "hotel_cost": 115
+    },
+    {
+      "type": "payment",
+      "instruction": "Zweiter Preis im Schönheitswettbewerb. Sie erhalten 10 CHF",
+      "value": 10
+    }
+  ]
+}
