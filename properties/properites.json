@@ -3,122 +3,346 @@
     {
       "name": "Bahnhof Luzern",
       "category": "Railroad",
-      "price": 200
+      "price": 200,
+      "rent": {
+        "1": 25,
+        "2": 50,
+        "3": 100,
+        "4": 200
+      }
     },
     {
       "name": "Bahnhof Zürich",
       "category": "Railroad",
-      "price": 200
+      "price": 200,
+      "rent": {
+        "1": 25,
+        "2": 50,
+        "3": 100,
+        "4": 200
+      }
     },
     {
       "name": "Bahnhof Basel",
       "category": "Railroad",
-      "price": 200
+      "price": 200,
+      "rent": {
+        "1": 25,
+        "2": 50,
+        "3": 100,
+        "4": 200
+      }
     },
     {
       "name": "Bahnhof Genf",
       "category": "Railroad",
-      "price": 200
+      "price": 200,
+      "rent": {
+        "1": 25,
+        "2": 50,
+        "3": 100,
+        "4": 200
+      }
     },
     {
       "name": "Zürich Paradeplatz",
       "category": "Blue",
-      "price": 400
+      "price": 400,
+      "rent": {
+        "base": 50,
+        "1house": 200,
+        "2houses": 600,
+        "3houses": 1400,
+        "4houses": 1700,
+        "hotel": 2000
+      },
+      "houseCost": 200,
+      "hotelCost": 200
     },
     {
       "name": "Bahnhofstrasse",
       "category": "Blue",
-      "price": 350
+      "price": 350,
+      "rent": {
+        "base": 35,
+        "1house": 175,
+        "2houses": 500,
+        "3houses": 1100,
+        "4houses": 1300,
+        "hotel": 1500
+      },
+      "houseCost": 200,
+      "hotelCost": 200
     },
     {
       "name": "Bern Bundesplatz",
       "category": "Green",
-      "price": 320
+      "price": 320,
+      "rent": {
+        "base": 28,
+        "1house": 150,
+        "2houses": 450,
+        "3houses": 1000,
+        "4houses": 1200,
+        "hotel": 1400
+      },
+      "houseCost": 200,
+      "hotelCost": 200
     },
     {
       "name": "Genf Quai du Mont-Blanc",
       "category": "Green",
-      "price": 300
+      "price": 300,
+      "rent": {
+        "base": 26,
+        "1house": 130,
+        "2houses": 390,
+        "3houses": 900,
+        "4houses": 1100,
+        "hotel": 1275
+      },
+      "houseCost": 200,
+      "hotelCost": 200
     },
     {
       "name": "Lugano Seepromenade",
       "category": "Green",
-      "price": 300
+      "price": 300,
+      "rent": {
+        "base": 26,
+        "1house": 130,
+        "2houses": 390,
+        "3houses": 900,
+        "4houses": 1100,
+        "hotel": 1275
+      },
+      "houseCost": 200,
+      "hotelCost": 200
     },
     {
       "name": "Chur Altstadt",
       "category": "Yellow",
-      "price": 260
+      "price": 260,
+      "rent": {
+        "base": 22,
+        "1house": 110,
+        "2houses": 330,
+        "3houses": 800,
+        "4houses": 975,
+        "hotel": 1150
+      },
+      "houseCost": 150,
+      "hotelCost": 150
     },
     {
       "name": "Interlaken Jungfraujoch",
       "category": "Yellow",
-      "price": 260
+      "price": 260,
+      "rent": {
+        "base": 22,
+        "1house": 110,
+        "2houses": 330,
+        "3houses": 800,
+        "4houses": 975,
+        "hotel": 1150
+      },
+      "houseCost": 150,
+      "hotelCost": 150
     },
     {
       "name": "Thun Schloss",
       "category": "Yellow",
-      "price": 240
+      "price": 240,
+      "rent": {
+        "base": 20,
+        "1house": 100,
+        "2houses": 300,
+        "3houses": 750,
+        "4houses": 925,
+        "hotel": 1100
+      },
+      "houseCost": 150,
+      "hotelCost": 150
     },
     {
       "name": "Zermatt Matterhorn",
       "category": "Red",
-      "price": 220
+      "price": 220,
+      "rent": {
+        "base": 18,
+        "1house": 90,
+        "2houses": 250,
+        "3houses": 700,
+        "4houses": 875,
+        "hotel": 1050
+      },
+      "houseCost": 150,
+      "hotelCost": 150
     },
     {
       "name": "Lausanne Ouchy",
       "category": "Red",
-      "price": 220
+      "price": 220,
+      "rent": {
+        "base": 18,
+        "1house": 90,
+        "2houses": 250,
+        "3houses": 700,
+        "4houses": 875,
+        "hotel": 1050
+      },
+      "houseCost": 150,
+      "hotelCost": 150
     },
     {
       "name": "Montreux Riviera",
       "category": "Red",
-      "price": 200
+      "price": 200,
+      "rent": {
+        "base": 16,
+        "1house": 80,
+        "2houses": 220,
+        "3houses": 600,
+        "4houses": 800,
+        "hotel": 1000
+      },
+      "houseCost": 150,
+      "hotelCost": 150
     },
     {
       "name": "St. Moritz Skigebiet",
       "category": "Orange",
-      "price": 180
+      "price": 180,
+      "rent": {
+        "base": 14,
+        "1house": 70,
+        "2houses": 200,
+        "3houses": 550,
+        "4houses": 750,
+        "hotel": 950
+      },
+      "houseCost": 100,
+      "hotelCost": 100
     },
     {
       "name": "Luzern Kapellbrücke",
       "category": "Orange",
-      "price": 180
+      "price": 180,
+      "rent": {
+        "base": 14,
+        "1house": 70,
+        "2houses": 200,
+        "3houses": 550,
+        "4houses": 750,
+        "hotel": 950
+      },
+      "houseCost": 100,
+      "hotelCost": 100
     },
     {
       "name": "Davos Kongresszentrum",
       "category": "Orange",
-      "price": 160
+      "price": 160,
+      "rent": {
+        "base": 12,
+        "1house": 60,
+        "2houses": 180,
+        "3houses": 500,
+        "4houses": 700,
+        "hotel": 900
+      },
+      "houseCost": 100,
+      "hotelCost": 100
     },
     {
       "name": "Schaffhausen Rheinfall",
       "category": "Pink",
-      "price": 140
+      "price": 140,
+      "rent": {
+        "base": 10,
+        "1house": 50,
+        "2houses": 150,
+        "3houses": 450,
+        "4houses": 625,
+        "hotel": 750
+      },
+      "houseCost": 100,
+      "hotelCost": 100
     },
     {
       "name": "Solothurn Altstadt",
       "category": "Pink",
-      "price": 140
+      "price": 140,
+      "rent": {
+        "base": 10,
+        "1house": 50,
+        "2houses": 150,
+        "3houses": 450,
+        "4houses": 625,
+        "hotel": 750
+      },
+      "houseCost": 100,
+      "hotelCost": 100
     },
     {
       "name": "Aarau Aareufer",
       "category": "Pink",
-      "price": 120
+      "price": 120,
+      "rent": {
+        "base": 8,
+        "1house": 40,
+        "2houses": 100,
+        "3houses": 300,
+        "4houses": 450,
+        "hotel": 600
+      },
+      "houseCost": 100,
+      "hotelCost": 100
     },
     {
       "name": "Biel Altstadt",
       "category": "Light Blue",
-      "price": 100
+      "price": 100,
+      "rent": {
+        "base": 6,
+        "1house": 30,
+        "2houses": 90,
+        "3houses": 270,
+        "4houses": 400,
+        "hotel": 550
+      },
+      "houseCost": 50,
+      "hotelCost": 50
     },
     {
       "name": "Freiburg Altstadt",
       "category": "Light Blue",
-      "price": 100
+      "price": 100,
+      "rent": {
+        "base": 6,
+        "1house": 30,
+        "2houses": 90,
+        "3houses": 270,
+        "4houses": 400,
+        "hotel": 550
+      },
+      "houseCost": 50,
+      "hotelCost": 50
     },
     {
       "name": "St. Gallen Klosterbezirk",
       "category": "Light Blue",
-      "price": 120
+      "price": 120,
+      "rent": {
+        "base": 8,
+        "1house": 40,
+        "2houses": 100,
+        "3houses": 300,
+        "4houses": 450,
+        "hotel": 600
+      },
+      "houseCost": 50,
+      "hotelCost": 50
     }
   ]
 }
