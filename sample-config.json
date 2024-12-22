@@ -1,0 +1,6 @@
+{
+  "monopoly_db_name": "<name of original user db",
+  "db_address": "<ip:port>",
+  "db_user": "<user>",
+  "db_password": "<password>"
+}
