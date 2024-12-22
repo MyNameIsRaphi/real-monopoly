@@ -25,5 +25,6 @@ CREATE TABLE IF NOT EXISTS properties (
     name VARCHAR(255) NOT NULL, 
     category VARCHAR(255) NOT NULL, 
     value DOUBLE NOT NULL,
-    FOREIGN KEY (player_id) REFERENCES players(id)
+    FOREIGN KEY (player_id) REFERENCES players(id)M,
+    price_bought BIGINT,
 );
