@@ -23,7 +23,7 @@ build_test:
 
 # Run target for test
 run_test:
-	@java -cp $(JAR) $(CLASS_test)
+	@java -ea -cp  $(JAR) $(CLASS_test)
 
 # Clean target for test to remove .class files
 clean_test:
