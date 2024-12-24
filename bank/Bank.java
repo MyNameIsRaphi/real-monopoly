@@ -39,12 +39,12 @@ public class Bank {
         return calculatedInterest;
     }
 
-    public Credit giveCredit(Player player, double loan) {
+    public Credit giveCredit(Player player, double loan) throws RuntimeException {
         double wealth = player.getWealth();
         double income = player.calculateIncome();
         double interest = calculateInterest(loan, wealth, income);
         if (interest > 0 || loan * 0.1 > reserve) {
-            throw new Exception("Not enough reserve or player is not ledigable for a credit");
+            throw new RuntimeException("Not enough reserve or player is not ledigable for a credit");
         }
 
         double newMoney = loan * 0.9;
