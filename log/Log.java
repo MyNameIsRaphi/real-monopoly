@@ -22,30 +22,34 @@ public class Log {
     }
 
     public void warn(String output) {
-        this.logger.log(Level.WARNING, output);
+        logger.log(Level.WARNING, output);
     }
 
-    public void warnf(String output, String... args) {
+    public void warnf(String output, Object... args) {
         String fOutput = String.format(output, args);
-        this.logger.log(Level.WARNING, fOutput);
+        logger.log(Level.WARNING, fOutput);
     }
 
-    public void errof(String output, String... args) {
+    public void errorf(String output, Object... args) {
         String fOutput = String.format(output, args);
-        this.logger.log(Level.SEVERE, fOutput);
+        logger.log(Level.SEVERE, fOutput);
+        logger.log(Level.SEVERE, "Terminating the program");
+        System.exit(1); // Terminate the program
     }
 
     public void error(String output) {
-        this.logger.log(Level.SEVERE, output);
+        logger.log(Level.SEVERE, output);
+        logger.log(Level.SEVERE, "Terminating the program");
+        System.exit(1); // Terminate the program
     }
 
     public void info(String output) {
-        this.logger.log(Level.INFO, output);
+        logger.log(Level.INFO, output);
     }
 
-    public void infof(String output, String... args) {
+    public void infof(String output, Object... args) {
         String fOutput = String.format(output, args);
-        this.logger.log(Level.INFO, fOutput);
+        logger.log(Level.INFO, fOutput);
     }
 
     static class ColoredFormatter extends Formatter {
