@@ -11,14 +11,20 @@ public class Log {
     private static final String RED = "\u001B[31m"; // Red for SEVERE
 
     public Log() {
-        Logger logger = Logger.getLogger("real-monopoly");
+        logger = Logger.getLogger("real-monopoly");
+        removeHandlers(); // remove handlers to avoid duplicate logs
         // Create a custom console handler
         ConsoleHandler consoleHandler = new ConsoleHandler();
         consoleHandler.setFormatter(new ColoredFormatter()); // Use custom formatter
         logger.addHandler(consoleHandler);
         logger.setUseParentHandlers(false); // Disable parent handlers
+    }
 
-        this.logger = logger;
+    private void removeHandlers() {
+        Handler[] handlers = logger.getHandlers();
+        for (Handler handler : handlers) {
+            logger.removeHandler(handler);
+        }
     }
 
     public void warn(String output) {
