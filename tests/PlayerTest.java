@@ -1,8 +1,12 @@
 package tests;
 
+import log.Log;
+
 public class PlayerTest {
+    private static Log logger = new Log();
+
     public static void runTests() {
         // Add test logic here
-        System.out.println("PlayerTest passed");
+        logger.info("PlayerTest passed");
     }
 }

@@ -1,8 +1,12 @@
 package tests;
 
+import log.Log;
+
 public class PropertyTest {
+    private static Log logger = new Log();
+
     public static void runTests() {
         // Add test logic here
-        System.out.println("PropertyTest passed");
+        logger.info("PropertyTest passed");
     }
 }
