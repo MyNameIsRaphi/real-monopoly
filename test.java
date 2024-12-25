@@ -8,7 +8,7 @@ import tests.DBTest;
 public class test {
     public static void main(String[] args) {
         Log logger = new Log();
-        logger.warnf("Failed to print %d while executing %s", 12, "main");
+        logger.info("Executing tests");
 
         // Run all tests
         ConfigTest.runTests();
