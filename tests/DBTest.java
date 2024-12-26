@@ -6,6 +6,7 @@ import log.Log;
 import java.util.Arrays;
 import java.util.List;
 import user.User;
+import game.Game;
 
 public class DBTest {
     private static Log logger = new Log();
@@ -18,6 +19,7 @@ public class DBTest {
         try {
             DBTest.testIfUserTablesExists();
             DBTest.testUser();
+            DBTest.testGame();
         } catch (AssertionError e) {
             logger.error("Failed to create all user tables");
         }
@@ -35,7 +37,7 @@ public class DBTest {
 
     }
 
-    private static void testUser() {
+    private static User testUser() {
         User user = new User("test", "raphael");
         user.hashPassword();
         assert user.password != "test";
@@ -45,11 +47,21 @@ public class DBTest {
         logger.info("Found user id: " + foundUser.id);
         assert foundUser.name.equals(user.name);
         assert foundUser.password.equals(user.password);
+        return foundUser;
 
     }
 
-    private static void testBank() {
-        // TODO Add test logic here
+    private static void testGame() {
+        User user = testUser();
+        Game testGame = new Game(2, user.id);
+        db.createGame(testGame);
+        Game[] foundGames = db.getGamesByUserId(user.id);
+        db.removeGameById(foundGames[0].game_id);
+        assert foundGames.length > 0;
+        for (Game game : foundGames) {
+            assert game.user_id == user.id;
+
+        }
 
     }
 }

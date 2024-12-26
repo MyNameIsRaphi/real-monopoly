@@ -1,13 +1,11 @@
 package database;
 
-import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.ArrayList;
 import user.User;
 import log.Log;
-import players.Player;
 import config.Config;
-import utils.Utils;
+import game.Game;
 
 public class DB {
     private String password;
@@ -145,6 +143,24 @@ public class DB {
             logger.errorf("Failed to get user by name with error: %s", e.getMessage());
             return null;
         }
+        return getUserByResultSet(rs);
+    }
+
+    public User getUserById(int id) {
+        String query = "SELECT * FROM users WHERE id = " + id;
+        ResultSet rs;
+        try {
+            rs = executeQuery(query);
+
+        } catch (SQLException e) {
+            logger.errorf("Failed to get user by id with error: %s", e.getMessage());
+            return null;
+        }
+
+        return getUserByResultSet(rs);
+    }
+
+    private User getUserByResultSet(ResultSet rs) {
         if (rs == null) {
             return null;
         }
@@ -155,6 +171,74 @@ public class DB {
             logger.errorf("Failed to get user with error: %s", e.getMessage());
             return null;
         }
+    }
+
+    public boolean createGame(Game game) {
+        // true -> successfully created game
+        // false -> failed to create game
+        String statement = String.format(
+
+                "INSERT INTO games (number_of_players, user_id) VALUES (%d, %d)",
+                game.number_of_players,
+                game.user_id);
+        try {
+            executeStatement(statement);
+        } catch (SQLException e) {
+            logger.errorf("Failed to create game with error: %s", e.getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public Game[] getGamesByUserId(int user_id) {
+        String query = "SELECT * FROM games WHERE user_id = " + user_id;
+        ResultSet rs;
+        try {
+            rs = executeQuery(query);
+        } catch (SQLException e) {
+            logger.errorf("Failed to get games by user id with error: %s", e.getMessage());
+            return null;
+        }
+        // read result set
+        ArrayList<Game> games = new ArrayList<Game>();
+        try {
+            while (rs.next()) {
+                games.add(new Game(rs.getInt("number_of_players"), rs.getInt("user_id"), rs.getInt("id")));
+            }
+        } catch (SQLException e) {
+            logger.errorf("Failed to get games by user id with error: %s", e.getMessage());
+            return null;
+        }
+        return games.toArray(new Game[0]);
+    }
+
+    public Game getGameById(int id) {
+        String statement = "SELECT * FROM games WHERE id = " + id;
+        ResultSet rs;
+        try {
+            rs = executeQuery(statement);
+        } catch (SQLException e) {
+            logger.errorf("Failed to get game by id with error: %s", e.getMessage());
+            return null;
+        }
+        try {
+            rs.next();
+            return new Game(rs.getInt("number_of_players"), rs.getInt("user_id"), rs.getInt("id"));
+        } catch (SQLException e) {
+            logger.errorf("Failed to get game by id. Message %s", e.getMessage());
+            return null;
+        }
+    }
+
+    public boolean removeGameById(int id) {
+        String statement = "DELETE FROM games WHERE id = " + id;
+        try {
+            executeStatement(statement);
+        } catch (SQLException e) {
+            logger.errorf("Failed to remove game by id with error: %s", e.getMessage());
+            return false;
+        }
+        return true;
     }
 
     private void executeStatement(String statement) throws SQLException {
