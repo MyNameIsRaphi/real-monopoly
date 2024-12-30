@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import user.User;
 import game.Game;
+import bank.Bank;
 
 public class DBTest {
     private static Log logger = new Log();
@@ -20,6 +21,7 @@ public class DBTest {
             DBTest.testIfUserTablesExists();
             DBTest.testUser();
             DBTest.testGame();
+            DBTest.testBank();
         } catch (AssertionError e) {
             logger.error("Failed to create all user tables");
         }
@@ -51,7 +53,7 @@ public class DBTest {
 
     }
 
-    private static void testGame() {
+    private static Game testGame() {
         User user = testUser();
         Game testGame = new Game(2, user.id);
         db.createGame(testGame);
@@ -62,6 +64,20 @@ public class DBTest {
             assert game.user_id == user.id;
 
         }
+        return foundGames[0];
+
+    }
+
+    public static void testBank() {
+        Game game = testGame();
+        Bank bank = new Bank(4000, game.game_id);
+        assert db.createBank(bank);
+        Bank foundBank = db.getBankByGameId(game.game_id);
+        assert foundBank.getReserve() == bank.getReserve();
+        assert foundBank.getGameId() == bank.getGameId();
+        assert foundBank.getInflation() == bank.getInflation();
+        assert foundBank.getHighestCreditId() == bank.getHighestCreditId();
+        assert foundBank.getGameId() == bank.getGameId();
 
     }
 }

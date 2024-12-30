@@ -8,6 +8,10 @@ public class Bank {
     private double inflation;
     private HashMap<Integer, Credit> credits = new HashMap<Integer, Credit>();
     private int highest_credit_id = 0;
+    @SuppressWarnings("unused")
+    private int id;
+    @SuppressWarnings("unused")
+    private int game_id;
 
     private int generateCreditID() {
 
@@ -16,8 +20,17 @@ public class Bank {
         return id;
     }
 
-    public Bank(double reserve) {
+    public Bank(double reserve, int game_id) {
         this.reserve = reserve;
+        this.game_id = game_id;
+    }
+
+    public Bank(double reserve, double inflation, int highest_credit_id, int id, int game_id) {
+        this.reserve = reserve;
+        this.inflation = inflation;
+        this.highest_credit_id = highest_credit_id;
+        this.id = id;
+        this.game_id = game_id;
     }
 
     public double calculateInterest(double loan, double wealth, double income) {
@@ -79,4 +92,19 @@ public class Bank {
         System.out.println("Printing $" + money);
     }
 
+    public double getReserve() {
+        return reserve;
+    }
+
+    public double getInflation() {
+        return inflation;
+    }
+
+    public int getHighestCreditId() {
+        return highest_credit_id;
+    }
+
+    public int getGameId() {
+        return game_id;
+    }
 }

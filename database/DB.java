@@ -6,6 +6,7 @@ import user.User;
 import log.Log;
 import config.Config;
 import game.Game;
+import bank.Bank;
 
 public class DB {
     private String password;
@@ -239,6 +240,63 @@ public class DB {
             return false;
         }
         return true;
+    }
+
+    public void close() {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            logger.errorf("Failed to close connection with error: %s", e.getMessage());
+        }
+    }
+
+    public boolean createBank(Bank bank) {
+        String statement = String.format(
+                "INSERT INTO banks (reserve, highest_credit_id, inflation, game_id) VALUES (%f, %d, %f, %d)",
+                bank.getReserve(),
+                bank.getHighestCreditId(),
+                bank.getInflation(),
+                bank.getGameId());
+        try {
+            executeStatement(statement);
+        } catch (SQLException e) {
+            logger.errorf("Failed to create bank with error: %s", e.getMessage());
+            return false;
+        }
+        return true;
+
+    }
+
+    public Bank getBank(int id) {
+        String statement = "SELECT * FROM banks WHERE id = " + id;
+        ResultSet rs;
+        try {
+            rs = executeQuery(statement);
+
+            rs.next();
+            return new Bank(rs.getDouble("reserve"), rs.getDouble("inflation"), rs.getInt("highest_credit_id"),
+                    rs.getInt("id"), rs.getInt("game_id"));
+
+        } catch (SQLException e) {
+            logger.errorf("Failed to get bank by id with error: %s", e.getMessage());
+            return null;
+        }
+    }
+
+    public Bank getBankByGameId(int game_id) {
+        String statement = "SELECT * FROM banks WHERE game_id = " + game_id;
+        ResultSet rs;
+        try {
+            rs = executeQuery(statement);
+
+            rs.next();
+            return new Bank(rs.getDouble("reserve"), rs.getDouble("inflation"), rs.getInt("highest_credit_id"),
+                    rs.getInt("id"), rs.getInt("game_id"));
+
+        } catch (SQLException e) {
+            logger.errorf("Failed to get bank by game id with error: %s", e.getMessage());
+            return null;
+        }
     }
 
     private void executeStatement(String statement) throws SQLException {
