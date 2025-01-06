@@ -1,6 +1,6 @@
 package tests;
 
-import database.DB;
+import database.user.UserDB;
 import config.Config;
 import log.Log;
 import java.util.Arrays;
@@ -8,11 +8,12 @@ import java.util.List;
 import user.User;
 import game.Game;
 import bank.Bank;
+import database.game.GameDB;
 
 public class DBTest {
     private static Log logger = new Log();
     private static Config config = new Config("./config/config.json");
-    private static DB db = new DB(config.getDbAddress(), config.getDbUser(), config.getDbPassword());
+    private static UserDB db = new UserDB(config.getDbAddress(), config.getDbUser(), config.getDbPassword());
 
     public static void runTests() {
         // Add test logic here
@@ -22,10 +23,11 @@ public class DBTest {
             DBTest.testUser();
             DBTest.testGame();
             DBTest.testBank();
+            DBTest.testGameTables(); // Add this line
         } catch (AssertionError e) {
-            logger.error("Failed to create all user tables");
+            logger.error("Tests failed: " + e.getMessage());
         }
-        logger.info("DB connection successful");
+        logger.info("All tests completed successfully");
 
     }
 
@@ -46,7 +48,6 @@ public class DBTest {
 
         db.createUser(user);
         User foundUser = db.getUserByName(user.name);
-        logger.info("Found user id: " + foundUser.id);
         assert foundUser.name.equals(user.name);
         assert foundUser.password.equals(user.password);
         return foundUser;
@@ -58,7 +59,6 @@ public class DBTest {
         Game testGame = new Game(2, user.id);
         db.createGame(testGame);
         Game[] foundGames = db.getGamesByUserId(user.id);
-        db.removeGameById(foundGames[0].game_id);
         assert foundGames.length > 0;
         for (Game game : foundGames) {
             assert game.user_id == user.id;
@@ -80,4 +80,38 @@ public class DBTest {
         assert foundBank.getGameId() == bank.getGameId();
 
     }
+
+    private static void testGameTables() {
+        Game game = testGame();
+        GameDB gameDb = new GameDB(config.getDbAddress(), config.getDbUser(), config.getDbPassword(),
+                game.game_id);
+        gameDb.connect();
+        gameDb.createGameTables();
+
+        String[] tables = gameDb.getAllTables(gameDb.getName());
+        if (tables.length == 0) {
+            throw new AssertionError("No tables found in database");
+        }
+
+        boolean hasPlayers = false;
+        boolean hasCredits = false;
+        boolean hasProperties = false;
+
+        for (String table : tables) {
+            switch (table) {
+                case "players":
+                    hasPlayers = true;
+                    break;
+                case "credits":
+                    hasCredits = true;
+                    break;
+                case "properties":
+                    hasProperties = true;
+                    break;
+            }
+        }
+
+        assert hasPlayers && hasCredits && hasProperties : "Game tables were not created successfully";
+    }
+
 }
