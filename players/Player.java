@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class Player {
 
-    public String name;
+    private String name;
 
     private double assets_worth;
     private double liquid_wealth;
@@ -16,6 +16,14 @@ public class Player {
     public Player(String name, double money) {
         this.liquid_wealth = money;
         this.name = name;
+    }
+
+    public Player(String name, double money, double liquid_wealth, int id) {
+        this.liquid_wealth = liquid_wealth;
+        this.name = name;
+        this.id = id;
+        this.name = name;
+
     }
 
     public void adjustInflation(double rate) {
@@ -73,21 +81,25 @@ public class Player {
     }
 
     public boolean addAsset(Property property) {
-        if (properties.containsKey(property.name)) {
+        if (properties.containsKey(property.getName())) {
             // property is already added
             return false;
         }
-        properties.put(property.name, property);
+        properties.put(property.getName(), property);
         return true;
     }
 
     public boolean removeAsset(Property property) {
-        if (!properties.containsKey(property.name)) {
+        if (!properties.containsKey(property.getName())) {
             // property not added
             return false;
         }
-        properties.remove(property.name);
+        properties.remove(property.getName());
         return true;
+    }
+
+    public String getName() {
+        return name;
     }
 
 }
