@@ -2,6 +2,9 @@ package bank;
 
 import players.Player;
 import java.util.HashMap;
+import config.Config;
+import game.Game;
+import database.game.GameDB;
 
 public class Bank {
     private double reserve;
@@ -12,6 +15,7 @@ public class Bank {
     private int id;
     @SuppressWarnings("unused")
     private int game_id;
+    private Config config = new Config("./config/config.json");
 
     private int generateCreditID() {
 
@@ -65,24 +69,30 @@ public class Bank {
         inflation = newMoney / reserve;
         printMoney(newMoney);
         int id = generateCreditID();
-        Credit credit = new Credit(player, interest, loan, id);
+        Credit credit = new Credit(player.id, interest, loan, id);
         this.credits.put(id, credit);
         return credit;
     }
 
     public boolean payBackLoan(Credit credit, double money) {
         // check if credit exists
-        if (!credits.containsKey(credit.id)) {
+        if (!credits.containsKey(credit.getId())) {
             return false;
         }
-        boolean success = credit.player.substractLiquidWealth(money);
+        // get player
+        GameDB gameDB = new GameDB(config.getDbAddress(), config.getDbUser(), config.getDbPassword(), game_id);
+        Player player = gameDB.getPlayer(credit.getPlayerId());
+        player.substractLiquidWealth(money);
+        boolean success = player.substractLiquidWealth(money);
+        // update player
+        gameDB.updatePlayer(player);
         if (!success) {
             return false;
         }
         // update credit
         credit.loan -= money;
         credit.interest = credit.interestRate * credit.loan;
-        credits.put(credit.id, credit);
+        credits.put(credit.getId(), credit);
         reserve += money;
         return true;
     }
